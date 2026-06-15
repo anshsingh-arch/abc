@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Shilpy, With Love</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Quicksand:wght@400;500;600&display=swap');
+
+  :root{
+    --maroon: #5C2A33;
+    --wine: #8B4049;
+    --blush: #F6D9D9;
+    --rose: #D98E96;
+    --cream: #FFF6F3;
+    --gold: #E0B568;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  body{
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(160deg, var(--maroon) 0%, var(--wine) 45%, #B5717A 100%);
+    color: var(--cream);
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* floating hearts */
+  .petal{
+    position: fixed;
+    top: -10%;
+    font-size: 1.4rem;
+    opacity: 0.55;
+    animation: fall linear infinite;
+    z-index: 0;
+    pointer-events: none;
+    color: var(--blush);
+  }
+  @keyframes fall{
+    to{ transform: translateY(110vh) rotate(360deg); }
+  }
+
+  main{
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 8vh 6vw 10vh;
+    text-align: center;
+  }
+
+  .eyebrow{
+    font-size: 0.8rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.4rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.2s;
+  }
+
+  /* glowing heart signature */
+  .glow-heart{
+    font-size: 3.2rem;
+    margin-bottom: 1.2rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards, glow 2.6s ease-in-out infinite;
+    animation-delay: 0.1s, 1.2s;
+    filter: drop-shadow(0 0 12px rgba(224,181,104,0.6));
+  }
+  @keyframes glow{
+    0%,100%{ transform: scale(1); filter: drop-shadow(0 0 10px rgba(224,181,104,0.5)); }
+    50%{ transform: scale(1.12); filter: drop-shadow(0 0 24px rgba(224,181,104,0.9)); }
+  }
+
+  h1{
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 8vw, 4.4rem);
+    line-height: 1.15;
+    color: var(--cream);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.5s;
+  }
+
+  .sub{
+    font-size: 1.05rem;
+    color: var(--blush);
+    opacity: 0;
+    margin-bottom: 3.5rem;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.9s;
+  }
+
+  @keyframes fadeUp{
+    from{ opacity:0; transform: translateY(18px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  .note{
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(224,181,104,0.25);
+    border-radius: 22px;
+    padding: 2.4rem 1.8rem;
+    margin-bottom: 2.2rem;
+    text-align: left;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+  }
+
+  .note:nth-of-type(1){ animation-delay: 1.3s; }
+  .note:nth-of-type(2){ animation-delay: 1.7s; }
+  .note:nth-of-type(3){ animation-delay: 2.1s; }
+  .note:nth-of-type(4){ animation-delay: 2.5s; }
+
+  .note p{
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.05rem, 2.6vw, 1.35rem);
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--cream);
+  }
+
+  .note .label{
+    display: inline-block;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    font-style: normal;
+  }
+
+  .smile-note{
+    background: rgba(224,181,104,0.12);
+    border: 1px solid rgba(224,181,104,0.4);
+  }
+
+  .signature{
+    margin-top: 4rem;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--gold);
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 2.9s;
+  }
+
+  .name-pop{
+    margin-top: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    letter-spacing: 0.05em;
+    color: var(--gold);
+    opacity: 0;
+    animation: fadeUp 1s ease forwards, popIn 0.9s ease forwards;
+    animation-delay: 3.2s, 3.2s;
+  }
+
+  @keyframes popIn{
+    0%{ transform: scale(0.4); }
+    60%{ transform: scale(1.25); }
+    80%{ transform: scale(0.95); }
+    100%{ transform: scale(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; opacity: 1 !important; }
+    .petal{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<main>
+  <div class="glow-heart">❤</div>
+  <div class="eyebrow">A little something, just for you</div>
+  <h1>Hi Shilpy, take a breath. You're doing better than you think.</h1>
+  <p class="sub">I know things have felt heavy lately. I just wanted to remind you of a few things.</p>
+
+  <div class="note">
+    <span class="label">I love you</span>
+    <p>From far away, you're still the first thing on my mind and the last thought before I sleep. Distance doesn't change that, not even a little.</p>
+  </div>
+
+  <div class="note">
+    <span class="label">I see your hard work</span>
+    <p>Everything you're handling right now, all the patience you're showing, the energy you're giving to people who don't always make it easy, I notice it. It does not go unnoticed, and it does not go unappreciated.</p>
+  </div>
+
+  <div class="note">
+    <span class="label">I understand you</span>
+    <p>Your feelings are valid. Whatever frustration, tiredness, or sadness you're carrying, you don't have to explain it or justify it to me. I get it, and I'm with you in it, even from here.</p>
+  </div>
+
+  <div class="note smile-note">
+    <span class="label">All I want</span>
+    <p>If there's one thing I wish for today, it's just to see you smile, and to keep seeing it, all day, every day. That's it. That's the whole wish.</p>
+  </div>
+
+  <div class="signature">— always yours, with all my heart</div>
+  <div class="name-pop">Ansh ❤️ Shilpy</div>
+</main>
+
+<script>
+  const petals = ['❤','💕','🌹','✨'];
+  for(let i=0; i<22; i++){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.textContent = petals[Math.floor(Math.random()*petals.length)];
+    p.style.left = Math.random()*100 + 'vw';
+    p.style.animationDuration = (8 + Math.random()*10) + 's';
+    p.style.animationDelay = (Math.random()*10) + 's';
+    p.style.fontSize = (1 + Math.random()*1.2) + 'rem';
+    document.body.appendChild(p);
+  }
+</script>
+
+</body>
+</html>
